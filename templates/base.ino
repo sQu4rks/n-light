@@ -20,7 +20,7 @@ struct Character {
 Character* currentWord[WORD_LENGTH] = { {{ chars|join(',')}} };
 int currentPosition = 40;
 
-#define SPEED 20
+#define SPEED {{ speed }}
 
 void setup() {
     delay( 1000 );

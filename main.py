@@ -53,7 +53,7 @@ def send_text():
     required_chars = []
     for c in individuals:
         required_chars.append(let.get_letter(c))
-    source = make_response(render_template("base.ino", chars=formatted_word,used_chars=required_chars)).data
+    source = make_response(render_template("base.ino", chars=formatted_word,used_chars=required_chars,speed=request.form['speed'])).data
 
     source_str = source.decode('utf-8')
     ret = compile_avr(source_str)
