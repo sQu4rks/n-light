@@ -1,4 +1,5 @@
 {% autoescape false %}
+#include <Arduino.h>
 #include <FastLED.h>
 #define LED_PIN     3
 #define NUM_LEDS    280
