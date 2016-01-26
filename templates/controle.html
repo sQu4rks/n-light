@@ -20,7 +20,7 @@
             <option value="50">50</option>
           </select>
           <br>
-          <label class="form-control" name="color" id="color">Farbe</label>
+          <label name="color" id="color">Farbe</label>
           <select class="form-control" name="color" id="color">
             <option value="AliceBlue">AliceBlue</option>
             <option value="Amethyst">Amethyst</option>
@@ -193,10 +193,11 @@
     </div>
     <div class="col-md-6">
       <h2>Programm laden</h2>
-      <form action="/send-current" method="POST">
+      <form action="/send-template" method="POST">
         <label for="program">Programm</label>
         <select id="program" class="form-control">
-          <option value="/path/to/program/">Programm</option>
+          <option value="Raining-Snowing.ino">Rain and Snow</option>
+          <option value="Snake.ino">Snake</option>
         </select>
         <br>
         <button type="submit" class="btn btn-success">Programm laden</button>

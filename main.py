@@ -27,6 +27,18 @@ def error():
 def main_controlle():
     return render_template("controle.html")
 
+@app.route("/send-template",methods=['POST'])
+@require_auth
+def send_template():
+    template = request.form['program']
+    source = make_response(render_template(template)).data
+    source_str = source.decode('utf-8')
+
+    ret = compile_avr(source_str)
+
+    if ret == "ERR":
+        return redirect("/compile-error")
+    return redirect("/controlle")
 @app.route("/send-char",methods=['POST'])
 @require_auth
 def send_char():
