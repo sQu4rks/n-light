@@ -34,7 +34,7 @@ void drawCharacterAtPosition(struct Character *current, int position){
     for(int x=0;x<current->width;x++){
       if(position + x < 40 && position + x >= 0){
         if(current->data[x + y*current->width]){
-          leds[position+x + y*40] = CRGB::Red;
+          leds[position+x + y*40] = CRGB::{{ color }};
         }
         else{
           leds[position+x + y*40] = CRGB::Black;
