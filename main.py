@@ -10,6 +10,7 @@ from flask import make_response
 from flask import redirect
 
 import shutil
+import os
 from letters import Letters
 
 app = Flask(__name__)
