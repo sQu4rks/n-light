@@ -53,8 +53,11 @@ def send_text():
     source = make_response(render_template("base.ino", chars=formatted_word,used_chars=required_chars)).data
 
     source_str = source.decode('utf-8')
+    compile_avr(source_str)
 
-    compile_path = "/home/nlight/src"
+    return redirect("/controlle")
+
+def compile_avr(source_str,compile_path = "/home/nlight/src"):
     # Delete everything in path
     if os.path.exists(compile_path):
         shutil.rmtree(compile_path)
@@ -63,13 +66,11 @@ def send_text():
         os.makedirs(compile_path)
 
     with open(compile_path + "/source.ino", "w") as f:
-        print("Wrinting files to " + compile_path + "source.ino")
+        print("Writing files to " + compile_path + "/source.ino")
         f.writelines(source_str)
         f.close()
     # Run compiler
     os.system("cd /home/nlight/ && ino build && ino upload")
-
-    return redirect("/controlle")
 def find_individuals(text):
     individuals = []
     for s in text:

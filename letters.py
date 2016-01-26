@@ -314,6 +314,6 @@ class Letters:
     }};
     """
     def get_letter(self,l):
-        return self.letters[l].replace("\n","")
+        return self.letters[str(l).upper()].replace("\n","")
     def add_letter(self,name,coding):
         self.letters[name] = coding
