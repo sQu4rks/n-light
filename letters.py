@@ -278,6 +278,30 @@ class Letters:
     }};
     """
 
+    letters['X'] = """
+    Character charX = {5, {
+      true, false, false, false, true,
+      true, false, false, false, true,
+      false, true, false, true, false,
+      false, false, true, false, false,
+      false, true, false, true, false,
+      true, false, false, false, true,
+      true, false, false, false, true
+    }};
+    """
+
+    letters['Y'] = """
+    Characters charY = {5, {
+      true, false, false, false, true,
+      true, false, false, false, true,
+      false, true, false, true, false,
+      false, false, true, false, false,
+      false, false, true, false, false,
+      false, false, true, false, false,
+      false, false, true, false, false
+    }};
+    """
+
     letters['Z'] = """
     Character charZ = {5, {
       true, true, true, true, true,
