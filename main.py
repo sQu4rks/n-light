@@ -19,6 +19,9 @@ let = Letters()
 def main():
     return render_template("home.html")
 
+@app.route("/compile-error")
+def error():
+    return render_template("error.html")
 @app.route("/controlle")
 @require_auth
 def main_controlle():
@@ -53,24 +56,35 @@ def send_text():
     source = make_response(render_template("base.ino", chars=formatted_word,used_chars=required_chars)).data
 
     source_str = source.decode('utf-8')
-    compile_avr(source_str)
+    ret = compile_avr(source_str)
 
+    if ret == "ERR":
+        return redirect("/compile-error")
     return redirect("/controlle")
 
 def compile_avr(source_str,compile_path = "/home/nlight/src"):
-    # Delete everything in path
-    if os.path.exists(compile_path):
-        shutil.rmtree(compile_path)
-        os.makedirs(compile_path)
+    if os.path.isfile("/home/nlight/compile.lock"):
+        return "ERR"
     else:
-        os.makedirs(compile_path)
+        with open("/home/nlight/compile.lock","w") as l:
+            l.write("Locked")
+            l.close()
+        # Delete everything in path
+        if os.path.exists(compile_path):
+            shutil.rmtree(compile_path)
+            os.makedirs(compile_path)
+        else:
+            os.makedirs(compile_path)
 
-    with open(compile_path + "/source.ino", "w") as f:
-        print("Writing files to " + compile_path + "/source.ino")
-        f.writelines(source_str)
-        f.close()
-    # Run compiler
-    os.system("cd /home/nlight/ && ino build && ino upload")
+        with open(compile_path + "/source.ino", "w") as f:
+            print("Writing files to " + compile_path + "/source.ino")
+            f.writelines(source_str)
+            f.close()
+        # Run compiler
+        os.system("cd /home/nlight/ && ino build && ino upload")
+        # Remove compile log
+        os.remove("/home/nlight/compile.lock")
+        return "OK"
 def find_individuals(text):
     individuals = []
     for s in text:
