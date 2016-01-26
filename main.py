@@ -56,6 +56,8 @@ def send_text():
     compile_path = "/home/nlight/src/"
     # Delete everything in path
     shutil.rmtree(compile_path)
+    if not os.path.exists(compile_path):
+        os.makedirs(compile_path)
 
     with open(compile_path + "source.ino", "w") as f:
         print("Wrinting files to " + compile_path + "source.ino")
