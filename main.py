@@ -53,13 +53,15 @@ def send_text():
 
     source_str = source.decode('utf-8')
 
-    compile_path = "/home/nlight/src/"
+    compile_path = "/home/nlight/src"
     # Delete everything in path
-    shutil.rmtree(compile_path)
-    if not os.path.exists(compile_path):
+    if os.path.exists(compile_path):
+        shutil.rmtree(compile_path)
+        os.makedirs(compile_path)
+    else os.path.exists(compile_path):
         os.makedirs(compile_path)
 
-    with open(compile_path + "source.ino", "w") as f:
+    with open(compile_path + "/source.ino", "w") as f:
         print("Wrinting files to " + compile_path + "source.ino")
         f.writelines(source_str)
         f.close()
