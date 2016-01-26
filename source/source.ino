@@ -1,5 +1,5 @@
 
-#include < FastLED.h >
+#include <FastLED.h>
 #define LED_PIN     3
 #define NUM_LEDS    280
 #define BRIGHTNESS  64
@@ -13,7 +13,7 @@ struct Character {
 };
 
 
-  Character charA{7, {true,true,true,true,true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false}};
+      Character charA = {7, {        false, false, false, true, false, false, false,        false, false, true, false, true, false, false,        false, true, false, false, false, true, false,        false, true, true, true, true, true, false,        true, false, false, false, false, false, true,        true, false, false, false, false, false, true,        true, false, false, false, false, false, true,    }};    
 
       Character charB = {5, {      true, true, true, true, false,      true, false, false, false, true,      true, false, false, false, true,      true, true, true, true, false,      true, false, false, false, true,      true, false, false, false, true,      true, true, true, true, false,    }};    
 

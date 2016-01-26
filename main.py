@@ -9,6 +9,7 @@ from flask import render_template
 from flask import make_response
 from flask import redirect
 
+import shutil
 from letters import Letters
 
 app = Flask(__name__)
@@ -51,9 +52,18 @@ def send_text():
     source = make_response(render_template("base.ino", chars=formatted_word,used_chars=required_chars)).data
 
     source_str = source.decode('utf-8')
-    with open("source.ino", "w") as f:
+
+    compile_path = "/home/nlight/src/"
+    # Delete everything in path
+    shutil.rmtree(compile_path)
+    
+    with open(compile_path + "source.ino", "w") as f:
+        print("Wrinting files to " + compile_path + "source.ino")
         f.writelines(source_str)
         f.close()
+    # Run compiler
+    os.system("cd /home/nlight/ && ino build && ino upload")
+
     return redirect("/controlle")
 def find_individuals(text):
     individuals = []

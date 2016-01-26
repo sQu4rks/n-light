@@ -1,5 +1,5 @@
 {% autoescape false %}
-#include < FastLED.h >
+#include <FastLED.h>
 #define LED_PIN     3
 #define NUM_LEDS    280
 #define BRIGHTNESS  64
