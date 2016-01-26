@@ -56,7 +56,7 @@ def send_text():
     compile_path = "/home/nlight/src/"
     # Delete everything in path
     shutil.rmtree(compile_path)
-    
+
     with open(compile_path + "source.ino", "w") as f:
         print("Wrinting files to " + compile_path + "source.ino")
         f.writelines(source_str)
@@ -80,4 +80,4 @@ def get_word_equivalent(w):
     else:
         return "char"+ str(w).upper()
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0')
