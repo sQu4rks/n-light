@@ -59,7 +59,7 @@ def send_text():
     if os.path.exists(compile_path):
         shutil.rmtree(compile_path)
         os.makedirs(compile_path)
-    else os.path.exists(compile_path):
+    else:
         os.makedirs(compile_path)
 
     with open(compile_path + "/source.ino", "w") as f:
