@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title%}Hauptseite{%endblock%}
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Text an Matrix senden</h2>
+      <form action="/send-text" method="POST">
+        <div class="input-group">
+          <label for="text">Text</label>
+          <input type="text" class="form-control" name="text" id="text" />
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success">An Matrix senden</button>
+        <button type="reset" class="btn btn-danger">Zurücksetzen</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <h2>Zeichen umdefinieren</h2>
+      <form action="/send-char" method="POST">
+        <label for="char_n">Name des Chars (wird &charNAME)</label><input class="form-control" type="input" name="char_n" id="char_n" />
+        <br>
+        {% for x in range(7) %}
+          {% for y in range(7) %}
+            <input type="checkbox" id="check-{{x}}-{{y}}" name="check-{{x}}-{{y}}" />
+          {% endfor %}
+          <br>
+        {% endfor %}
+        <br>
+        <button type="submit" class="btn btn-success">Symbol speichern</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
