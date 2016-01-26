@@ -41,10 +41,10 @@ void loop()
       }
       if(lines[x] > -1){
         //normal white snow
-        leds[x + lines[x]*40] = CRGB::White;
+        //leds[x + lines[x]*40] = CRGB::White;
 
         //glitter snow
-        //leds[x + lines[x]*40] = CRGB(random(256), random(256), random(256));
+        leds[x + lines[x]*40] = CRGB(random(256), random(256), random(256));
       }
     }
     FastLED.show();
