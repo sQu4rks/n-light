@@ -28,7 +28,7 @@ void setup() {
 
 }
 
-void drawCharacterAtPosition(Character *current, int position){
+void drawCharacterAtPosition(struct Character *current, int position){
   for(int y=0;y<7;y++){ //go through all rows
     for(int x=0;x<current->width;x++){
       if(position + x < 40 && position + x >= 0){
